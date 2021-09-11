@@ -1,0 +1,44 @@
+zuul:
+  prefix: /apigateway
+  routes:
+    resource:
+    ORDER-SERVICE:
+     path: /order_service/**
+     service-id: ORDER-SERVICE 
+    RESTAURANT-SERVICE: 
+     path: /restaurant_service/**
+     service-id: RESTAURANT-SERVICE    
+     
+server:
+  port: 8004
+  
+  
+spring:
+  application:
+    name: zuul-server
+    
+management:
+  endpoint:
+    routes:
+      enabled: true
+    restart:
+      enabled: true
+    shutdown:
+      enabled: true
+    health:
+      enabled: true    
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+      
+      
+      
+     
+         
